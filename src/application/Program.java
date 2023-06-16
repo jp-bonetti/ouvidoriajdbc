@@ -127,7 +127,7 @@ public class Program {
 				System.out.println("Voce escolheu a opcao deletar uma manifestacoes: ");
 				System.out.println();
 				
-				System.out.println("Informe o ID da manifestacao que deseja excluir");
+				System.out.println("Informe o ID da manifestacao que deseja excluir:");
 				System.out.println();
 				
 				Manifestacao manifestacao = new Manifestacao();
@@ -139,10 +139,6 @@ public class Program {
 				
 				manifestacao.deletarManifestacao(conn, idExcluir);
 				
-				System.out.println();
-				System.out.println("Manifestacao excluida com sucesso!");
-				System.out.println();
-				
 			}
 			break;
 			
@@ -152,10 +148,6 @@ public class Program {
 				
 				Manifestacao manifestacao = new Manifestacao();
 				manifestacao.deletarTodasManifestacaoes(conn);
-				
-				System.out.println();
-				System.out.println("Manifestaoes excluidas com sucesso!");
-				System.out.println();
 			}
 			break;
 			}	

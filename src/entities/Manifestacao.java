@@ -104,11 +104,22 @@ public class Manifestacao implements Serializable{
 		
 		try {
 			
-			PreparedStatement ps = conn.prepareStatement("DELETE FROM MANIFESTACAO WHERE ID_MANIFESTACAO = ?");
+			PreparedStatement ps = conn.prepareStatement("DELETE FROM MANIFESTACAO WHERE ID_MANIFESTACAO = ?",PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			ps.setInt(1, id);
 			
-			ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
+			
+			if (rowsAffected == 0) {
+				System.out.println();
+				System.out.println("Erro ao realizar operacao, ID invalido ou banco de dados vazio.");
+			} else {
+				System.out.println();
+				System.out.println("Manifestacao excluida com sucesso!");
+				System.out.println();
+			}
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -119,9 +130,18 @@ public class Manifestacao implements Serializable{
 		
 		try {
 			
-			PreparedStatement ps = conn.prepareStatement("DELETE FROM MANIFESTACAO");
+			PreparedStatement ps = conn.prepareStatement("DELETE FROM MANIFESTACAO", PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			ps.executeUpdate();
+			int rowsAffected = ps.executeUpdate();
+			
+			if (rowsAffected == 0) {
+				System.out.println();
+				System.out.println("Erro ao realizar operacao, banco de dados vazio.");
+			} else {
+				System.out.println();
+				System.out.println("Manifestaoes excluidas com sucesso!");
+				System.out.println();
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
