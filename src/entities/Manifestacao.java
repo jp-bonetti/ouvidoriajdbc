@@ -116,7 +116,6 @@ public class Manifestacao implements Serializable{
 			} else {
 				System.out.println();
 				System.out.println("Manifestacao excluida com sucesso!");
-				System.out.println();
 			}
 			
 			
@@ -140,7 +139,6 @@ public class Manifestacao implements Serializable{
 			} else {
 				System.out.println();
 				System.out.println("Manifestaoes excluidas com sucesso!");
-				System.out.println();
 			}
 			
 		} catch (SQLException e) {
