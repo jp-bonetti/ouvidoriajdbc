@@ -39,14 +39,14 @@ public class Program {
 		
 		int menu = 0;
 		
-		while (menu != 3) {
+		while (menu != 5) {
 			
 			System.out.println();
 			System.out.println(marcadores);
 			System.out.println("           Informe qual opcao voce deseja: ");
 			System.out.println(marcadores);
 			System.out.println();
-			System.out.println("1 - Inserir manifestacao | 2 - Listar manifestacao | 3 - Sair");
+			System.out.println("1 - Inserir manifestacao | 2 - Listar manifestacao | 3 - Deletar Especifico | 4 - Deletar tudo | 5 - Sair");
 			System.out.println();
 			System.out.print("Sua opcao: ");
 			menu = sc.nextInt();
@@ -119,6 +119,43 @@ public class Program {
 				Manifestacao manifestacao = new Manifestacao();
 				manifestacao.listarManifestacoes(conn);
 				
+			}
+			break;
+			
+			case 3: {
+				System.out.println();
+				System.out.println("Voce escolheu a opcao deletar uma manifestacoes: ");
+				System.out.println();
+				
+				System.out.println("Informe o ID da manifestacao que deseja excluir");
+				System.out.println();
+				
+				Manifestacao manifestacao = new Manifestacao();
+				manifestacao.listarManifestacoes(conn);
+				
+				System.out.println();
+				System.out.print("Sua opcao: ");
+				int idExcluir = sc.nextInt();
+				
+				manifestacao.deletarManifestacao(conn, idExcluir);
+				
+				System.out.println();
+				System.out.println("Manifestacao excluida com sucesso!");
+				System.out.println();
+				
+			}
+			break;
+			
+			case 4: {
+				System.out.println();
+				System.out.println("Voce escolheu a opcao deletar todas as manifestacoes: ");
+				
+				Manifestacao manifestacao = new Manifestacao();
+				manifestacao.deletarTodasManifestacaoes(conn);
+				
+				System.out.println();
+				System.out.println("Manifestaoes excluidas com sucesso!");
+				System.out.println();
 			}
 			break;
 			}	

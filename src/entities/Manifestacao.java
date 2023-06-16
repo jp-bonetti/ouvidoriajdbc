@@ -143,10 +143,17 @@ public class Manifestacao implements Serializable{
 					+ "ON manifestacao.ID_PESSOA = pessoa.ID\r\n"
 					+ "ORDER BY ID");
 			
-			while (rs.next()) {
+			if (!rs.isBeforeFirst()) {
+                System.out.println("Nenhuma manifestacao cadastrada!");
+            }
+			
+			while(rs.next()) {
 				String obj = "ID: " + rs.getInt("ID_MANIFESTACAO") + " | Nome: " +rs.getString("NOME") + " | Tipo : " + rs.getString("TIPO") +" | Descricao: " + rs.getString("TEXTO");
 				System.out.println(obj);
 			}
+			
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
