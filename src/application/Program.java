@@ -116,8 +116,50 @@ public class Program {
 				System.out.println("Voce escolheu a opcao listar manifestacoes: ");
 				System.out.println();
 				
-				Manifestacao manifestacao = new Manifestacao();
-				manifestacao.listarManifestacoes(conn);
+				System.out.println("Voce deseja listar de que forma?");
+				System.out.println();
+				
+				System.out.println("1 - Todas | 2 - Por tipo");
+				System.out.println();
+				System.out.print("Sua opcao: ");
+				int escolha = sc.nextInt();
+				
+				System.out.println();
+				
+				switch(escolha) {
+				case 1: {
+					Manifestacao manifestacao = new Manifestacao();
+					manifestacao.listarManifestacoes(conn);
+				}
+				break;
+				case 2: {
+					System.out.println();
+					System.out.println("Qual tipo de manifestacao voce deseja exibir?");
+					System.out.println();
+					System.out.println(marcadores);
+					System.out.println("     1 - Elogio | 2 - Reclamacao | 3 - Sugestao");
+					System.out.println(marcadores);
+					System.out.println();
+					System.out.print("Sua opcao: ");
+					int escolhaTipo = sc.nextInt();
+					System.out.println();
+					
+					String tipoBD = null;
+					
+					if (escolhaTipo == 1) {
+						tipoBD = "Elogio";
+					} else if (escolhaTipo == 2) {
+						tipoBD = "Reclamacao";
+					} else if (escolhaTipo == 3) {
+						tipoBD = "Sugestao";
+					}
+					
+					Manifestacao manifestacao = new Manifestacao();
+					manifestacao.listarManifestacoesPorTipo(conn,tipoBD);
+					
+				}
+				break;
+				}
 				
 			}
 			break;

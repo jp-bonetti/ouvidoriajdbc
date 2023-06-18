@@ -177,5 +177,39 @@ public class Manifestacao implements Serializable{
 		} 
 	}
 	
+public void listarManifestacoesPorTipo(Connection conn, String tipo) {
+		
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DB.getConnection();
+	
+			st = conn.createStatement();
+			
+			rs = st.executeQuery("SELECT manifestacao.*, pessoa.Nome as Nome "
+					+ "FROM manifestacao "
+					+ "INNER JOIN pessoa ON manifestacao.ID_PESSOA = pessoa.ID "
+					+ "WHERE manifestacao.Tipo = "+ "'" + tipo + "' " 
+					+ "ORDER BY ID;");
+			
+			
+			
+			if (!rs.isBeforeFirst()) {
+                System.out.println("Nenhuma manifestacao cadastrada!");
+            }
+			
+			while(rs.next()) {
+				String obj = "ID: " + rs.getInt("ID_MANIFESTACAO") + " | Nome: " +rs.getString("NOME") + " | Tipo : " + rs.getString("TIPO") +" | Descricao: " + rs.getString("TEXTO");
+				System.out.println(obj);
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	}
+	
 	
 }
